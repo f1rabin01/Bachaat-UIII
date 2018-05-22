@@ -1,3 +1,15 @@
-<p>
-  input-field-text works!
-</p>
+<div class="form-group" [formGroup]="fg">
+  <label>{{labelName}}<small *ngIf="optional === true">(optional)</small></label>
+  <input class="form-control" formControlName="fcn" required>
+  <div *ngIf = "fcn.invalid && (fcn.dirty)" class="alert alert-danger">
+    <div *ngIf = "fcn.errors.required">
+      Required!!
+    </div>
+    <div *ngIf = "fcn.errors.minlength">
+      Min Length should be {{minLength}}!!
+    </div>
+    <div *ngIf = "fcn.errors.maxlength">
+      Max Length is {{maxLength}}!!
+    </div>
+  </div>
+</div>
