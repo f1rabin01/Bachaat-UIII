@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../../../user';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
@@ -13,9 +12,7 @@ export class InputFieldTextComponent implements OnInit {
   @Input() minLength?: number;
   @Input() maxLength?: number;
   @Input() fg: FormGroup;
-  // model: User;
   constructor(private fb: FormBuilder) {
-    // this.model = new User(1, 'Rabeendranath123', 'Naga', '', '');
   }
   ngOnInit() {
     this.fg = this.fb.group({
