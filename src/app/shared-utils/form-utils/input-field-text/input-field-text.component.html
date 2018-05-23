@@ -11,5 +11,8 @@
     <div *ngIf = "formControlName.errors.maxlength">
       Max Length is {{maxLength}}!!
     </div>
+    <div *ngIf = "formControlName.errors.pattern">
+      Should only be alphabet!!
+    </div>
   </div>
 </div>

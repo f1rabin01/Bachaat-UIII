@@ -17,12 +17,13 @@ export class InputFieldTextComponent implements OnInit {
     this.minLength = isNullOrUndefined(this.minLength) ? 3 : this.minLength;
   }
   ngOnInit() {
-   console.log('===============' + this.minLength);
+   // console.log('===============' + this.minLength);
     this.formGroup = this.fb.group({
       formControlName: ['', [
         Validators.required,
         Validators.minLength(this.minLength),
-        Validators.maxLength(this.maxLength)
+        Validators.maxLength(this.maxLength),
+        Validators.pattern('^[a-zA-Z]+$')
       ]]
     });
   }

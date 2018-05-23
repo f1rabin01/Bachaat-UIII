@@ -26,25 +26,26 @@ describe('InputFieldTextComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should give field required error when input field value is empty', () => {
-    const lastName = component.formControlName;
-    const errors = lastName.errors || {};
-    expect(errors['required']).toBeTruthy();
+    const textField = component.formControlName;
+    expect(textField.valid).toBeFalsy();
+    expect(textField.errors['required']).toBeTruthy();
   });
-  xit('should not give field required error when input field value is not empty', () => {
-    const lastName = component.formControlName;
-    lastName.setValue('Rab');
-    fixture.detectChanges();
-    const errors = lastName.errors || {};
-    expect(errors['required']).toBeFalsy();
+  it('should not give field required error when input field value is not empty', () => {
+    const textField = component.formGroup.controls['formControlName'];
+    textField.setValue('Rab');
+    expect(textField.valid).toBeTruthy();
   });
   it('should give field min length error when input field value is less than min length', () => {
-    const lastName = component.formControlName;
-    // component.minLength = 5;
-    lastName.setValue('Ra');
-    fixture.detectChanges();
-    const errors = lastName.errors;
-    console.log(errors);
-    expect(errors['minlength']).toBeTruthy();
-    // expect(errors['minlength']).toEqual(3);
+    const textField = component.formGroup.controls['formControlName'];
+    // component.minLength = 3; //Not being able to pass minLength
+    textField.setValue('Ra');
+    expect(component.formGroup.valid).toBeFalsy();
+    expect(textField.errors['minlength']).toBeDefined();
+  });
+  it('should give pattern error when input field value contains number', () => {
+    const textField = component.formGroup.controls['formControlName'];
+    textField.setValue('123');
+    expect(component.formGroup.valid).toBeFalsy();
+    expect(textField.errors['pattern']).toBeTruthy();
   });
 });
