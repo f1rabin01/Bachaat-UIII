@@ -1,14 +1,14 @@
-<div class="form-group" [formGroup]="fg">
+<div class="form-group" [formGroup]="formGroup">
   <label>{{labelName}}<small *ngIf="optional === true">(optional)</small></label>
-  <input class="form-control" formControlName="fcn" required>
-  <div *ngIf = "fcn.invalid && (fcn.dirty)" class="alert alert-danger">
-    <div *ngIf = "fcn.errors.required">
+  <input class="form-control" formControlName="formControlName" required>
+  <div *ngIf = "formControlName.invalid && formControlName.dirty" class="alert alert-danger">
+    <div *ngIf = "formControlName.errors.required">
       Required!!
     </div>
-    <div *ngIf = "fcn.errors.minlength">
+    <div *ngIf = "formControlName.errors.minlength">
       Min Length should be {{minLength}}!!
     </div>
-    <div *ngIf = "fcn.errors.maxlength">
+    <div *ngIf = "formControlName.errors.maxlength">
       Max Length is {{maxLength}}!!
     </div>
   </div>
